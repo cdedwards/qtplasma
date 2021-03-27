@@ -1,0 +1,175 @@
+
+loadusr -W xhc-hb04 -I ./xhc-hb04-layout2.cfg -H -x -s 1
+
+loadrt or2 names=pendant:run_or2,pendant:pause_or2,pendant:resume_or2,pendant:stop_or2,pendant:jog_speed_or2
+
+# RECONFIGURE SOME EXISTING HAL NETS
+
+addf pendant:run_or2    servo-thread
+addf pendant:pause_or2  servo-thread
+addf pendant:resume_or2 servo-thread
+addf pendant:stop_or2    servo-thread
+
+unlinkp halui.program.run
+unlinkp halui.program.pause
+unlinkp halui.program.resume
+unlinkp halui.program.stop
+
+net plasmac:program-run    => pendant:run_or2.in0
+net plasmac:program-pause  => pendant:pause_or2.in0
+net plasmac:program-resume => pendant:resume_or2.in0
+net plasmac:program-stop   => pendant:stop_or2.in0
+
+net program-run    pendant:run_or2.out    => halui.program.run
+net program-pause  pendant:pause_or2.out  => halui.program.pause
+net program-resume pendant:resume_or2.out => halui.program.resume
+net program-stop   pendant:stop_or2.out    => halui.program.stop
+# ABSOLUTE POSITION LCD
+net pendant:pos-x halui.axis.x.pos-feedback => xhc-hb04.x.pos-absolute
+net pendant:pos-y halui.axis.y.pos-feedback => xhc-hb04.y.pos-absolute
+net pendant:pos-z halui.axis.z.pos-feedback => xhc-hb04.z.pos-absolute
+
+# RELATIVE POSITION LCD
+net pendant:pos-rel-x halui.axis.x.pos-relative => xhc-hb04.x.pos-relative
+net pendant:pos-rel-y halui.axis.y.pos-relative => xhc-hb04.y.pos-relative
+net pendant:pos-rel-z halui.axis.z.pos-relative => xhc-hb04.z.pos-relative
+
+# JOG - AXIS AND JOINT SELECTION
+net pendant:jog-x     xhc-hb04.jog.enable-x    => axis.x.jog-enable joint.0.jog-enable
+net pendant:jog-y     xhc-hb04.jog.enable-y    => axis.y.jog-enable
+net pendant:jog-z     xhc-hb04.jog.enable-z    => axis.z.jog-enable joint.3.jog-enable
+unlinkp halui.axis.jog-speed
+net pendant:jog-speed halui.max-velocity.value => halui.axis.jog-speed
+
+# LOWPASS FILTERING FOR MPG
+loadrt ilowpass names=pendant:mpg_ilowpass,pendant:mpg_height-ovr
+addf pendant:mpg_ilowpass servo-thread
+addf pendant:mpg_height-ovr servo-thread
+setp pendant:mpg_ilowpass.scale 1000.00
+setp pendant:mpg_ilowpass.gain     0.01
+setp pendant:mpg_height-ovr.scale 1.00
+setp pendant:mpg_height-ovr.gain  0.01
+net  pendant:jog-counts_in  xhc-hb04.jog.counts        => pendant:mpg_ilowpass.in pendant:mpg_height-ovr.in
+net  pendant:jog-counts_out pendant:mpg_ilowpass.out   => axis.x.jog-counts axis.y.jog-counts axis.z.jog-counts
+net  pendant:jog-counts_out                            => joint.0.jog-counts joint.3.jog-counts
+net  pendant:jog-counts_out                            => halui.feed-override.counts
+net  pendant:ho-counts_out  pendant:mpg_height-ovr.out => halui.spindle.0.override.counts
+
+# SCALING FOR AXES AND JOINTS JOGGING
+loadrt mult2 names=pendant:jog_mult2
+loadrt mux2  names=pendant:jog_enable_mux
+addf pendant:jog_mult2    servo-thread
+setp pendant:jog_mult2.in1         0.001
+addf pendant:jog_enable_mux servo-thread
+setp pendant:jog_enable_mux.in0 0
+net  pendant:jog-scale-in   xhc-hb04.jog.scale         => pendant:jog_enable_mux.in1
+net  pendant:jog-scale-out  pendant:jog_enable_mux.out => pendant:jog_mult2.in0
+net  pendant:scale_div_1000 pendant:jog_mult2.out      => axis.x.jog-scale axis.y.jog-scale axis.z.jog-scale
+net  pendant:scale_div_1000                            => joint.0.jog-scale joint.3.jog-scale
+
+# FEEDOVERRIDE
+setp halui.feed-override.scale 0.00001
+net  pendant:feed-override xhc-hb04.jog.enable-feed-override => halui.feed-override.count-enable
+net  plasmac:feed-override                                   => xhc-hb04.feed-override
+
+##### BUTTONS ##################################################################
+
+# JOG AXIS TO ZERO
+# BUTTON=01:button-goto-zero
+net pendant:goto-0-x xhc-hb04.button-goto-zero-x => halui.mdi-command-00
+net pendant:goto-0-y xhc-hb04.button-goto-zero-y => halui.mdi-command-01
+net pendant:goto-0-z xhc-hb04.button-goto-zero-z => halui.mdi-command-02
+#net pendant:goto-0-a xhc-hb04.button-goto-zero-a => halui.mdi-command-03
+
+# RUN, PAUSE, RESUME - in sequence
+# BUTTON=02:button-start-pause
+loadrt flipflop names=pendant:run_ff,pendant:pause_ff,pendant:resume_ff
+addf pendant:run_ff    servo-thread
+addf pendant:pause_ff  servo-thread
+addf pendant:resume_ff servo-thread
+net pendant:start-pause-pressed xhc-hb04.button-start-pause => pendant:run_ff.clk pendant:pause_ff.clk pendant:resume_ff.clk
+net plasmac:program-is-idle                                 => pendant:run_ff.data
+net plasmac:program-is-running                              => pendant:run_ff.reset pendant:pause_ff.data pendant:resume_ff.reset
+net plasmac:program-is-paused                               => pendant:pause_ff.reset pendant:resume_ff.data
+net pendant:program-run         pendant:run_ff.out          => pendant:run_or2.in1
+net pendant:program-pause       pendant:pause_ff.out        => pendant:pause_or2.in1
+net pendant:program-resume      pendant:resume_ff.out       => pendant:resume_or2.in1
+
+# STEP PROGRAM
+# BUTTON=03:button-rewind
+net pendant:step xhc-hb04.button-rewind => halui.program.step
+
+# PROBE Z - M111
+# BUTTON=04:button-probe-z
+net pendant:probe-z xhc-hb04.button-probe-z => halui.mdi-command-04
+
+# NEXT CORNER
+# BUTTON=05:button-macro-3
+net pendant:macro-3 xhc-hb04.button-macro-3 => halui.mdi-command-05
+
+# UNUSED
+# BUTTON=06:button-half
+net pendant:half-x xhc-hb04.button-half-x => halui.mdi-command-06
+net pendant:half-y xhc-hb04.button-half-y => halui.mdi-command-07
+net pendant:half-z xhc-hb04.button-half-z => halui.mdi-command-08
+net pendant:half-a xhc-hb04.button-half-a => halui.mdi-command-09
+
+# TOUCHOFF AXIS TO ZERO
+# BUTTON=07:button-zero
+net pendant:set-0-x xhc-hb04.button-zero-x => halui.mdi-command-10
+net pendant:set-0-y xhc-hb04.button-zero-y => halui.mdi-command-11
+net pendant:set-0-z xhc-hb04.button-zero-z => halui.mdi-command-12
+net pendant:set-0-a xhc-hb04.button-zero-a => halui.mdi-command-13
+
+# Z TO HOME POSITION
+# BUTTON=08:button-safe-z
+net pendant:safe-z xhc-hb04.button-safe-z => halui.mdi-command-14
+
+# HOME ALL AXES
+# BUTTON=09:button-home
+net pendant:home xhc-hb04.button-home => halui.home-all
+
+# ENABLE JOG
+# BUTTON=0A:button-macro-1
+net pendant:jog-enable xhc-hb04.button-macro-1 => pendant:jog_enable_mux.sel
+
+# LOAD SHEET
+# BUTTON=0B:button-macro-2
+net pendant:macro-2 xhc-hb04.button-macro-2 => halui.mdi-command-15
+
+# TORCH PULSE - M112
+# BUTTON=0C:button-spindle
+net pendant:spindle xhc-hb04.button-spindle => halui.mdi-command-16
+
+# STEP SIZE
+# BUTTON=0D:button-step
+net pendant:xhcStepUp xhc-hb04.button-step => xhc-hb04.stepsize-down
+
+# SET MANUAL MODE
+# BUTTON=0E:button-mode
+net pendant:manual xhc-hb04.button-mode => halui.mode.manual
+
+# UNUSED
+# BUTTON=0F:button-macro-6
+net pendant:macro-6 xhc-hb04.button-macro-6 => halui.mdi-command-17
+
+# CLEAR NOTIFICATIONS - M100
+# BUTTON=10:button-macro-7
+net pendant:macro-7 xhc-hb04.button-macro-7 => halui.mdi-command-18
+
+# STOP PROGRAM
+# BUTTON=16:button-stop
+net pendant:program-stop xhc-hb04.button-stop => pendant:stop_or2.in1
+
+# MACHINE POWER TOGGLE
+# BUTTON=17:button-reset
+loadrt toggle      names=pendant:power-button_toggle
+loadrt toggle2nist names=pendant:power-machine_toggle
+addf pendant:power-button_toggle  servo-thread
+addf pendant:power-machine_toggle servo-thread
+net pendant:power_button         xhc-hb04.button-reset            => pendant:power-button_toggle.in
+net pendant:power-machine_toggle pendant:power-button_toggle.out  => pendant:power-machine_toggle.in
+net machine-is-on                                                 => pendant:power-machine_toggle.is-on
+#net machine-is-on                                                 => halui.machine.is-on
+net pendant:power-off            pendant:power-machine_toggle.off => halui.machine.off
+net pendant:power-on             pendant:power-machine_toggle.on  => halui.machine.on

@@ -1,0 +1,8 @@
+--- Qtvcp Screen Started on: Sat, Mar 27 2021 05:05:20 AM ---
+Sat27 05:05 Tool 0: No Tool
+Sat27 05:28 hm2/hm2_7i92.0: error finishing read! iter=801610
+
+Sat27 05:28 Unexpected realtime delay on task 0 with period 1700000
+This Message will only display once per session.
+Run the Latency Test and resolve before continuing.
+

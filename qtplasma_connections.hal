@@ -1,0 +1,55 @@
+# Keep your plasmac i/o connections here to prevent them from
+# being overwritten by updates or pncconf/stepconf changes.
+# Other customisations may be placed here as well
+
+#***** DEBOUNCE FOR THE INPUTS *****
+loadrt dbounce names=db_breakaway,db_float,db_ohmic,db_arc-ok
+addf db_float     servo-thread
+addf db_ohmic     servo-thread
+addf db_breakaway servo-thread
+addf db_arc-ok    servo-thread
+# for the float and ohmic inputs each increment in delay is
+# is a 0.001mm (0.00004") increase in any probed height result
+setp db_float.delay     5
+setp db_ohmic.delay     5
+setp db_breakaway.delay 5
+setp db_arc-ok.delay    5
+
+#***** ARC VOLTAGE LOWPASS FILTER *****
+# Only use this if comprehensive testing shows that it is required
+setp plasmac.lowpass-frequency 0
+
+#***** THE JOINT ASSOCIATED WITH THE Z AXIS *****
+net plasmac:axis-position joint.3.pos-fb => plasmac.axis-z-position
+
+
+#***** PLASMA CONNECTIONS *****
+setp hm2_7i92.0.gpio.019.is_output 1
+setp hm2_7i92.0.gpio.019.invert_output 1
+
+setp hm2_7i92.0.encoder.01.scale -1
+setp hm2_7i92.0.encoder.01.filter 0
+setp hm2_7i92.0.encoder.01.counter-mode 1
+
+#***** PLASMA CONNECTIONS FOR MODE 1 *****
+net plasmac:arc-voltage-in hm2_7i92.0.encoder.01.velocity => plasmac.arc-voltage-in
+net plasmac:arc-ok-in  hm2_7i92.0.gpio.032.in_not  => db_arc-ok.in
+net plasmac:float-switch hm2_7i92.0.gpio.033.in => db_float.in
+# net plasmac:breakaway {YOUR_BREAKAWAY_PIN} => db_breakaway.in
+# net plasmac:ohmic-probe {YOUR_OHMIC_PROBE_PIN} => db_ohmic.in
+# net plasmac:ohmic-enable plasmac.ohmic-enable  => {YOUR_OHMIC_ENABLE_PIN}
+net plasmac:torch-on => hm2_7i92.0.gpio.019.out
+
+#***** MULTIPLE TOOL ENABLE *****
+# set to 1 to enable a scribe or spotting
+setp plasmac.multi-tool 1
+
+#***** SCRIBE CONNECTIONS *****
+# net plasmac:scribe-arm plasmac.scribe-arm => {YOUR_SCRIBE_ARMING_OUTPUT}
+# net plasmac:scribe-on  plasmac.scribe-on  => {YOUR_SCRIBE_ON_OUTPUT}
+
+#***** PUT YOUR CUSTOM CONNECTION BELOW HERE *****
+
+setp plasmac.arc-lost-delay 0.15
+setp plasmac.zero-window 5
+

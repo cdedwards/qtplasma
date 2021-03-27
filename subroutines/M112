@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# TORCH PULSE
+if [ `halcmd getp plasmac.torch-enable` ] && [ `halcmd gets plasmac:program-is-idle` ]; then
+    halcmd setp plasmac.torch-pulse-start 1
+    sleep 0.1
+    halcmd setp plasmac.torch-pulse-start 0
+fi
+exit 0

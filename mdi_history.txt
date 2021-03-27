@@ -1,0 +1,13 @@
+G0X20Y20
+G0X0Y0
+o<next_corner> call
+o<next_corner> call
+probe-test 30
+o<probe-test 30> call
+G0X0Y0
+G0X14.5
+G0X14.5
+G0X13
+G0X0
+G0X0Y0
+G0X14.5

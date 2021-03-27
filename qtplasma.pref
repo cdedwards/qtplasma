@@ -1,0 +1,196 @@
+[DIALOG_OPTIONS]
+EntryDialog_play_sound = True
+EntryDialog_sound_type = READY
+toolDialog_play_sound = True
+toolDialog_speak = True
+toolDialog_sound_type = READY
+fileDialog_play_sound = True
+fileDialog_sound_type = READY
+CalculatorDialog_play_sound = True
+CalculatorDialog_sound_type = READY
+MachineLogDialog_play_sound = True
+MachineLogDialog_sound_type = READY
+RunFromLineDialog_play_sound = True
+RunFromLineDialog_sound_type = READY
+KeyboardDialog_play_sound = True
+KeyboardDialog_sound_type = READY
+
+[DIALOG_GEOMETRY]
+ToolChangeDialog-geometry = 0 0 100 30
+FileDialog-geometry = 644 246 632 412
+LncMessage-geometry = 0 0 100 30
+
+[BOOK_KEEPING]
+last_loaded_directory = /home/colten/linuxcnc/nc_files
+last_loaded_file = None
+style_QSS_Path = /home/colten/linuxcnc/configs/qtplasma/./qtplasmac.qss
+RecentPath_0 = /home/colten/linuxcnc/nc_files/easter eggs.ngc
+
+[ORIGINOFFSET_SYSTEM_NAMES]
+__dialogOffsetViewWidget-G54 = User System 1
+__dialogOffsetViewWidget-G55 = User System 2
+__dialogOffsetViewWidget-G56 = User System 3
+__dialogOffsetViewWidget-G57 = User System 4
+__dialogOffsetViewWidget-G58 = User System 5
+__dialogOffsetViewWidget-G59 = User System 6
+__dialogOffsetViewWidget-G59.1 = User System 7
+__dialogOffsetViewWidget-G59.2 = User System 8
+__dialogOffsetViewWidget-G59.3 = User System 9
+offset_table-G54 = User System 1
+offset_table-G55 = User System 2
+offset_table-G56 = User System 3
+offset_table-G57 = User System 4
+offset_table-G58 = User System 5
+offset_table-G59 = User System 6
+offset_table-G59.1 = User System 7
+offset_table-G59.2 = User System 8
+offset_table-G59.3 = User System 9
+
+[SCREEN_OPTIONS]
+catch_errors = True
+desktop_notify = True
+shutdown_check = True
+sound_player_on = False
+mainwindow_geometry = 1 30 1918 1001
+overlay_play_sound = False
+overlay_sound_type = RING
+
+[MCH_MSG_OPTIONS]
+mchnMsg_play_sound = True
+mchnMsg_speak_errors = True
+mchnMsg_sound_type = RING
+
+[USR_MSG_OPTIONS]
+usermsg_play_sound = True
+userMsg_sound_type = RING
+userMsg_use_focusOverlay = True
+
+[SHUTDOWN_OPTIONS]
+shutdown_play_sound = True
+shutdown_alert_sound_type = READY
+shutdown_exit_sound_type = LOGOUT
+shutdown_msg_title = Do you want to Shutdown now?
+shutdown_msg_detail = 
+
+[NOTIFY_OPTIONS]
+notify_start_greeting = True
+notify_start_title = Welcome
+notify_start_detail = This option can be changed in the preference file
+notify_start_timeout = 5
+
+[FILEMANAGER_JUMPLIST]
+
+[CUSTOM_FORM_ENTRIES]
+Tool to load = 0
+Laser X = 100.0
+Laser Y = -20.0
+Sensor X = 10.0
+Sensor Y = 10.0
+Camera X = 10.0
+Camera Y = 10.0
+Work Height = 20.0
+Touch Height = 40.0
+Sensor Height = 40.0
+Search Velocity = 40.0
+Probe Velocity = 10.0
+Max Probe = 10.0
+Eoffset count = 0
+External offsets = False
+Reload program = False
+Reload tool = False
+Use keyboard = False
+Run from line = False
+Use virtual keyboard = False
+Use tool sensor = False
+Use camera = False
+Use alpha display mode = False
+Inhibit display mouse selection = True
+
+[GUI_OPTIONS]
+Use keyboard shortcuts = True
+Use soft keyboard = False
+Show materials = True
+Run from line = True
+Preview cone size = 0.15
+Preview grid size = 2.0
+
+[COLOR_OPTIONS]
+Foreground = #00ffff
+Highlight = #00ffff
+LED = #0000ff
+Background = #16160e
+Background Alt = #36362e
+Frames = #00ffff
+Estop = #ff0000
+Disabled = #b0b0b0
+Preview = #000000
+
+[ENABLE_OPTIONS]
+THC enable = True
+Corner lock enable = True
+Kerf cross enable = True
+Use auto volts = True
+Ohmic probe enable = False
+
+[STATISTICS]
+Pierce count = 213
+Cut length = 1028.51758238
+Cut time = 715.1135
+Torch on time = 1113.88937473
+Program run time = 2215.21904302
+Rapid time = 400.725672245
+Probe time = 409.860023737
+
+[PLASMA_PARAMETERS]
+Setup Feed Rate = 75.0
+Arc Fail Timeout = 3.0
+Arc OK High = 99999.0
+Arc OK Low = 60.0
+Arc Maximum Starts = 3
+Arc Voltage Offset = 3518.75
+Arc Voltage Scale = 0.011298
+Velocity Anti Dive Threshold = 90.0
+Float Switch Travel = 0.3
+Height Per Volt = 0.004
+Void Sense Override = 100.0
+Ohmic Maximum Attempts = 0
+Ohmic Probe Offset = 0.0
+Pid P Gain = 10.0
+Pid D Gain = 0.0
+Pid I Gain = 0.0
+Probe Feed Rate = 12.0
+Probe Start Height = 1.0
+Arc Restart Delay = 60.0
+Safe Height = 1.0
+Scribe Arming Delay = 0.0
+Scribe On Delay = 0.0
+Skip IHS Distance = 0.0
+Spotting Threshold = 0.0
+Spotting Time = 0.0
+THC Delay = 0.5
+THC Threshold = 1.0
+
+[DEFAULT MATERIAL]
+Kerf width = 0.04
+Pierce height = 0.12
+Pierce delay = 0.0
+Puddle jump height = 0.0
+Puddle jump delay = 0.0
+Cut height = 0.04
+Cut feed rate = 157.0
+Cut amps = 45.0
+Cut volts = 99.0
+Pause at end = 0.0
+Gas pressure = 0.0
+Cut mode = 1.0
+
+[CONVERSATIONAL]
+Preamble = G20 G64P0.004 G40 G49 G80 G90 G92.1 G94 G97
+Postamble = G20 G64P0.004 G40 G49 G80 G90 G92.1 G94 G97
+Origin = 0
+Leadin = 0
+Leadout = 0
+Hole diameter = 1.26
+Hole speed = 60
+Grid Size = 0
+

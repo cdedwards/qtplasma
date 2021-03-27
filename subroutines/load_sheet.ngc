@@ -1,0 +1,22 @@
+o<load_sheet> sub
+
+    ; these are absolute (G53) coordinates
+    #<x_load>  = 20    ;X loading position
+    #<y_load>  = 20    ;Y loading position
+    #<x_park>  = 1      ;X parking position
+    #<y_park>  = 1      ;Y parking position
+
+
+    G28.1               ;save current absolute coordinates
+    #<x_saved> = #5161  ;X saved position
+    #<y_saved> = #5162  ;Y saved position
+
+    o100    if [#<x_saved> ne #<x_load>]
+                G53 G0 X#<x_load> Y#<y_load>
+    o100    elseif [#<y_saved> ne #<y_load>]
+                G53 G0 X#<x_load> Y#<y_load>
+    o100    else
+                G53 G0 X#<x_park> Y#<y_park>
+    o100    endif
+o<load_sheet> endsub
+m2

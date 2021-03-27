@@ -1,0 +1,32 @@
+o<next_corner> sub
+
+    ; these are absolute (G53) coordinates
+    #<x_left>  =    20  ;X left position
+    #<x_right> =   592  ;X right position
+    #<y_rear>  =   605  ;Y rear position
+    #<y_front> =    20  ;Y front position
+
+    G28.1               ;save current absolute coordinates
+    #<x_saved> = #5161  ;X saved position
+    #<y_saved> = #5162  ;Y saved position
+
+    o100 if [#<x_saved> eq #<x_left>]
+        o101 if [#<y_saved> eq #<y_rear>]
+            G53 G0 X#<x_right>
+        o101 else
+            G53 G0 Y#<y_rear>
+        o101 endif
+    o100 elseif [#<x_saved> eq #<x_right>]
+        o102 if [#<y_saved> eq #<y_rear>]
+            G53 G0 Y#<y_front>
+        o102 elseif [#<y_saved> eq #<y_front>]
+            G53 G0 X#<x_left>
+        o102 else
+            G53 G0 X#<x_left> Y#<y_rear>
+        o102 endif
+    o100 else
+        G53 G0 X#<x_left> Y#<y_rear>
+    o100 endif
+
+o<next_corner> endsub
+m2

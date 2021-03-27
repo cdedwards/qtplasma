@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# PROBE TEST
+if [ `halcmd gets plasmac:program-is-idle` ] && [ `halcmd getp plasmac.probe-test` = FALSE ]; then
+    halcmd setp plasmac.probe-test 1
+    sleep 10
+    halcmd setp plasmac.probe-test 0
+fi
+exit 0
