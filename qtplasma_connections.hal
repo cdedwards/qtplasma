@@ -8,6 +8,7 @@ addf db_float     servo-thread
 addf db_ohmic     servo-thread
 addf db_breakaway servo-thread
 addf db_arc-ok    servo-thread
+
 # for the float and ohmic inputs each increment in delay is
 # is a 0.001mm (0.00004") increase in any probed height result
 setp db_float.delay     5
@@ -31,12 +32,39 @@ setp hm2_7i92.0.encoder.01.scale -1
 setp hm2_7i92.0.encoder.01.filter 0
 setp hm2_7i92.0.encoder.01.counter-mode 1
 
+
 #***** PLASMA CONNECTIONS FOR MODE 1 *****
 net plasmac:arc-voltage-in hm2_7i92.0.encoder.01.velocity => plasmac.arc-voltage-in
 net plasmac:arc-ok-in  hm2_7i92.0.gpio.032.in_not  => db_arc-ok.in
 net plasmac:float-switch hm2_7i92.0.gpio.033.in => db_float.in
-# net plasmac:breakaway {YOUR_BREAKAWAY_PIN} => db_breakaway.in
-# net plasmac:ohmic-probe {YOUR_OHMIC_PROBE_PIN} => db_ohmic.in
+
+
+net plasmac:ohmic-probe ohmicsense.ohmic-on => db_ohmic.in
+net plasmac:ohmic-enable plasmac.ohmic-enable  => ohmicsense.is-probing
+
+# --- Load the Component ---
+loadrt ohmic names=ohmicsense
+addf ohmicsense servo-thread
+
+# --- 7i92 ENCODER 2 SETUP FOR OHMIC SENSING---
+setp hm2_7i92.0.encoder.02.scale -1
+setp hm2_7i92.0.encoder.02.counter-mode 1
+setp hm2_7i92.0.encoder.02.filter 1
+
+# --- Configure the component ---
+setp ohmicsense.thcad-0-volt-freq    135700
+setp ohmicsense.thcad-max-volt-freq  966000
+setp ohmicsense.thcad-divide         32
+setp ohmicsense.thcad-fullscale      5
+setp ohmicsense.volt-divider         4.9
+setp ohmicsense.ohmic-threshold      22.0
+setp ohmicsense.ohmic-low            1.0
+net ohmic-vel ohmicsense.velocity-in <= hm2_7i92.0.encoder.02.velocity
+
+
+
+
+
 # net plasmac:ohmic-enable plasmac.ohmic-enable  => {YOUR_OHMIC_ENABLE_PIN}
 net plasmac:torch-on => hm2_7i92.0.gpio.019.out
 

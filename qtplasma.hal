@@ -6,10 +6,20 @@
 loadrt [KINS]KINEMATICS
 loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_spindles=[TRAJ]SPINDLES
 loadrt hostmot2
-loadrt hm2_eth board_ip="10.10.10.10" config=" num_encoders=2 num_pwmgens=0 num_stepgens=5" 
+loadrt hm2_eth board_ip="10.10.10.100" config=" num_encoders=3 num_pwmgens=0 num_stepgens=5" 
 setp    [HMOT](CARD0).watchdog.timeout_ns 5000000
 loadrt pid names=pid.x,pid.y,pid.y2,pid.z,pid.s
 loadrt or2 names=or2.0
+loadrt dbounce names=db_home_z,db_home_y,db_home_y2,db_home_x
+
+addf db_home_z	  servo-thread
+setp db_home_z.delay    6
+addf db_home_y	  servo-thread
+setp db_home_y.delay    6
+addf db_home_y2	  servo-thread
+setp db_home_y2.delay    6
+addf db_home_x	  servo-thread
+setp db_home_x.delay    6
 
 addf [HMOT](CARD0).read          servo-thread
 addf motion-command-handler   servo-thread
@@ -91,14 +101,22 @@ net estop-ext     <=  [HMOT](CARD0).gpio.003.in_not
 net both-home-x     <=  [HMOT](CARD0).gpio.013.in_not
 
 # --- BOTH-HOME-Y ---
-net both-home-y     <=  [HMOT](CARD0).gpio.014.in_not
+#net both-home-y     <=  [HMOT](CARD0).gpio.014.in_not
+net y-raw [HMOT](CARD0).gpio.014.in_not => db_home_y.in
+net both-home-y db_home_y.out
 
 # --- BOTH-HOME-Y2 ---
-net both-home-y2     <=  [HMOT](CARD0).gpio.015.in_not
+#net both-home-y2     <=  [HMOT](CARD0).gpio.015.in_not
+net y2-raw [HMOT](CARD0).gpio.015.in_not => db_home_y2.in
+net both-home-y2 db_home_y2.out
 
 # --- BOTH-HOME-Z ---
-net both-home-z     <=  [HMOT](CARD0).gpio.016.in
+#net both-home-z     <=  [HMOT](CARD0).gpio.016.in
+net z-raw [HMOT](CARD0).gpio.016.in => db_home_z.in
+net both-home-z db_home_z.out
 
+
+ 
 #*******************
 #  AXIS X JOINT 0
 #*******************

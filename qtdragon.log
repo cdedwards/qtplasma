@@ -1,25 +1,18 @@
-2021-03-27 05:05:18,674 - QTvcp - INFO - Logging to "/home/colten/linuxcnc/configs/qtplasma/./qtdragon.log"
-2021-03-27 05:05:18,691 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No DEFAULT_SPINDLE_0_SPEED Entry in DISPLAY, Using: 200
-2021-03-27 05:05:18,691 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_0_SPEED Entry in DISPLAY, Using: 100
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_0_SPEED Entry in DISPLAY, Using: 2500
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_0_OVERRIDE Entry in DISPLAY, Using: 1
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_0_OVERRIDE Entry in DISPLAY, Using: 0.5
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No DEFAULT_SPINDLE_1_SPEED Entry in DISPLAY, Using: 200
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_1_SPEED Entry in DISPLAY, Using: 100
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_1_SPEED Entry in DISPLAY, Using: 2500
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_1_OVERRIDE Entry in DISPLAY, Using: 1
-2021-03-27 05:05:18,692 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_1_OVERRIDE Entry in DISPLAY, Using: 0.5
-2021-03-27 05:05:18,859 - QTvcp.QTVCP.LIB.AUDIO_PLAYER - ERROR - Audio player - Mint sound File not found /usr/share/sounds/LinuxMint/stereo/dialog-error.ogg
-2021-03-27 05:05:18,869 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT handler file path: /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac_handler.py
-2021-03-27 05:05:18,869 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT ui file from /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac.ui
-2021-03-27 05:05:18,869 - QTvcp.QTVCP.QT_PSTAT - INFO - No qss file found
-2021-03-27 05:05:18,869 - QTvcp.QTVCP.QT_PSTAT - INFO - No qrc file found
-2021-03-27 05:05:18,869 - QTvcp.QTVCP.QT_PSTAT - INFO - No resources.py file found, No QRC file to compile one from.
-2021-03-27 05:05:18,869 - QTvcp - INFO - Building A Linuxcnc Main Screen with Python 2
-2021-03-27 05:05:18,870 - QTvcp - INFO - No handler file specified on command line
-2021-03-27 05:05:18,870 - QTvcp - INFO - No HAL component base name specified on command line using: qtplasmac
-2021-03-27 05:05:19,163 - QTvcp.QTVCP.QT_MAKEGUI - INFO - No resource file to load: None
-2021-03-27 05:05:20,073 - QTvcp.QTVCP.WIDGETS.SCREEN_OPTIONS - WARNING - problem inserting VCP 'Right Panel' to location: box_right :
- 'VCPWindow' object has no attribute 'box_right'
-2021-03-27 05:05:21,505 - QTvcp - INFO - postgui filename: ['postgui.tcl']
-2021-03-27 05:05:21,539 - QTvcp - INFO - Preference path: ~/linuxcnc/configs/qtplasma/qtplasma.pref
+2021-06-06 11:17:49,054 - QTvcp - INFO - Logging to "/home/colten/linuxcnc/configs/qtplasma/qtdragon.log"
+2021-06-06 11:17:49,075 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No DEFAULT_SPINDLE_2_SPEED Entry in DISPLAY, Using: 200
+2021-06-06 11:17:49,076 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_2_SPEED Entry in DISPLAY, Using: 100
+2021-06-06 11:17:49,076 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_2_SPEED Entry in DISPLAY, Using: 2500
+2021-06-06 11:17:49,076 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_2_OVERRIDE Entry in DISPLAY, Using: 1
+2021-06-06 11:17:49,082 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_2_OVERRIDE Entry in DISPLAY, Using: 0.5
+2021-06-06 11:17:49,329 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT handler file path: /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac_handler.py
+2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT ui file from /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac.ui
+2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - No qss file found
+2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - No qrc file found
+2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - No resources.py file found, No QRC file to compile one from.
+2021-06-06 11:17:49,330 - QTvcp - INFO - Building A Linuxcnc Main Screen with Python 2
+2021-06-06 11:17:49,331 - QTvcp - INFO - No handler file specified on command line
+2021-06-06 11:17:49,331 - QTvcp - INFO - No HAL component base name specified on command line using: qtplasmac
+2021-06-06 11:17:49,749 - QTvcp.QTVCP.QT_MAKEGUI - INFO - No resource file to load: None
+2021-06-06 11:17:52,877 - QTvcp - INFO - postgui filename: ['postgui.tcl']
+2021-06-06 11:17:52,965 - QTvcp - INFO - Preference path: ~/linuxcnc/configs/qtplasma/qtplasma.pref
+2021-06-06 11:17:57,003 - QTvcp.QTVCP.QT_ACTION - INFO - Homing Joint: -1

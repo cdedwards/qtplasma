@@ -1,8 +1,109 @@
---- Qtvcp Screen Started on: Sat, Mar 27 2021 05:05:20 AM ---
-Sat27 05:05 Tool 0: No Tool
-Sat27 05:28 hm2/hm2_7i92.0: error finishing read! iter=801610
-
-Sat27 05:28 Unexpected realtime delay on task 0 with period 1700000
+--- Qtvcp Screen Started on: Sun, Jun 06 2021 11:17:50 AM ---
+Sun06 11:17 Tool 0: No Tool
+Sun06 11:21 Unexpected realtime delay on task 0 with period 1650000
 This Message will only display once per session.
 Run the Latency Test and resolve before continuing.
+
+Sun06 11:31 Loaded: /home/colten/linuxcnc/nc_files/Dar Transport 06.ngc
+Sun06 11:31 Tool 0: torch 
+Sun06 11:31 safe traverse height has been reduced.
+
+Sun06 11:31 safe traverse height has been reduced.
+
+Sun06 12:09 Loaded: /home/colten/linuxcnc/nc_files/dar pallet 01.ngc
+Sun06 12:12 safe traverse height has been reduced.
+
+Sun06 12:18 valid arc lost
+program is paused.
+
+Sun06 12:25 safe traverse height has been reduced.
+
+Sun06 12:26 safe traverse height has been reduced.
+
+Sun06 12:33 valid arc lost
+program is paused.
+
+Sun06 12:39 safe traverse height has been reduced.
+
+Sun06 12:52 safe traverse height has been reduced.
+
+Sun06 13:03 safe traverse height has been reduced.
+
+Sun06 13:11 safe traverse height has been reduced.
+
+Sun06 13:11 valid arc lost
+program is paused.
+
+Sun06 13:12 valid arc lost
+program is paused.
+
+Sun06 13:12 valid arc lost
+program is paused.
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:12 JOG ERROR:
+Cannot jog
+ohmic probe tripped
+
+Sun06 13:54 Loaded: /home/colten/linuxcnc/nc_files/makerCARVER Gantry Plates v2.ngc
+Sun06 13:56 safe traverse height has been reduced.
 

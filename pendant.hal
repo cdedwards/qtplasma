@@ -171,5 +171,6 @@ net pendant:power_button         xhc-hb04.button-reset            => pendant:pow
 net pendant:power-machine_toggle pendant:power-button_toggle.out  => pendant:power-machine_toggle.in
 net machine-is-on                                                 => pendant:power-machine_toggle.is-on
 #net machine-is-on                                                 => halui.machine.is-on
+#net machine-is-on	=>whb.halui.machine.is-on
 net pendant:power-off            pendant:power-machine_toggle.off => halui.machine.off
 net pendant:power-on             pendant:power-machine_toggle.on  => halui.machine.on
