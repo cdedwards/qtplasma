@@ -1,18 +1,14 @@
-2021-06-06 11:17:49,054 - QTvcp - INFO - Logging to "/home/colten/linuxcnc/configs/qtplasma/qtdragon.log"
-2021-06-06 11:17:49,075 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No DEFAULT_SPINDLE_2_SPEED Entry in DISPLAY, Using: 200
-2021-06-06 11:17:49,076 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_2_SPEED Entry in DISPLAY, Using: 100
-2021-06-06 11:17:49,076 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_2_SPEED Entry in DISPLAY, Using: 2500
-2021-06-06 11:17:49,076 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MAX_SPINDLE_2_OVERRIDE Entry in DISPLAY, Using: 1
-2021-06-06 11:17:49,082 - QTvcp.QTVCP.QT_ISTAT - WARNING - INI Parsing Error, No MIN_SPINDLE_2_OVERRIDE Entry in DISPLAY, Using: 0.5
-2021-06-06 11:17:49,329 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT handler file path: /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac_handler.py
-2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT ui file from /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac.ui
-2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - No qss file found
-2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - No qrc file found
-2021-06-06 11:17:49,330 - QTvcp.QTVCP.QT_PSTAT - INFO - No resources.py file found, No QRC file to compile one from.
-2021-06-06 11:17:49,330 - QTvcp - INFO - Building A Linuxcnc Main Screen with Python 2
-2021-06-06 11:17:49,331 - QTvcp - INFO - No handler file specified on command line
-2021-06-06 11:17:49,331 - QTvcp - INFO - No HAL component base name specified on command line using: qtplasmac
-2021-06-06 11:17:49,749 - QTvcp.QTVCP.QT_MAKEGUI - INFO - No resource file to load: None
-2021-06-06 11:17:52,877 - QTvcp - INFO - postgui filename: ['postgui.tcl']
-2021-06-06 11:17:52,965 - QTvcp - INFO - Preference path: ~/linuxcnc/configs/qtplasma/qtplasma.pref
-2021-06-06 11:17:57,003 - QTvcp.QTVCP.QT_ACTION - INFO - Homing Joint: -1
+2021-07-18 09:29:55,338 - QTvcp - INFO - Logging to "/home/colten/linuxcnc/configs/qtplasma/qtdragon.log"
+2021-07-18 09:29:55,603 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT handler file path: /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac_handler.py
+2021-07-18 09:29:55,603 - QTvcp.QTVCP.QT_PSTAT - INFO - Using DEFAULT ui file from /home/colten/git/linuxcnc/share/qtvcp/screens/qtplasmac/qtplasmac.ui
+2021-07-18 09:29:55,603 - QTvcp.QTVCP.QT_PSTAT - INFO - No qss file found
+2021-07-18 09:29:55,603 - QTvcp.QTVCP.QT_PSTAT - INFO - No qrc file found
+2021-07-18 09:29:55,603 - QTvcp.QTVCP.QT_PSTAT - INFO - No resources.py file found, No QRC file to compile one from.
+2021-07-18 09:29:55,604 - QTvcp - INFO - Building A Linuxcnc Main Screen with Python 2
+2021-07-18 09:29:55,604 - QTvcp - INFO - No handler file specified on command line
+2021-07-18 09:29:55,604 - QTvcp - INFO - No HAL component base name specified on command line using: qtplasmac
+2021-07-18 09:29:56,453 - QTvcp.QTVCP.QT_MAKEGUI - INFO - No resource file to load: None
+2021-07-18 09:29:59,041 - QTvcp - INFO - postgui filename: ['postgui.tcl']
+2021-07-18 09:29:59,107 - QTvcp - INFO - Preference path: ~/linuxcnc/configs/qtplasma/qtplasma.pref
+2021-07-18 09:39:04,999 - QTvcp.QTVCP.QT_ACTION - INFO - Homing Joint: -1
+2021-07-18 11:32:25,022 - QTvcp.QTVCP.QT_MAKEPINS - INFO - Closing cleanup on: filemanager
